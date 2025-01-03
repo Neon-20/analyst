@@ -35,6 +35,12 @@
       "provider": "Ollama",
       "providerId": "ollama",
       "name": "Llama 3.2 3B"
+    },
+    {
+      "id": "gpt-4o",
+      "provider": "Azure",
+      "providerId": "azure",
+      "name": "GPT-4o"
     }
   ]
 }
