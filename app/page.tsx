@@ -122,11 +122,11 @@ export default function Home() {
           <h1 className="text-md font-medium">
             Analyst by{" "}
             <a
-              href="https://e2b.dev"
+              href="https://alterdomus.com"
               target="_blank"
               className="underline decoration-[rgba(229,123,0,.3)] decoration-2 text-[#ff8800]"
             >
-              E2B
+              AD
             </a>
           </h1>
         </div>
