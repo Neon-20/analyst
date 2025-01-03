@@ -1,4 +1,5 @@
 import { createOpenAI } from "@ai-sdk/openai";
+import { createAzure } from "@ai-sdk/azure";
 import { createOllama } from "ollama-ai-provider";
 
 export type LLMModel = {
@@ -23,6 +24,7 @@ export type LLMModelConfig = {
 export function getModelClient(model: LLMModel, config: LLMModelConfig) {
   const { id: modelNameString, providerId } = model;
   const { apiKey, baseURL } = config;
+  const ENDPOINT = process.env.AZURE_ENDPOINT;
 
   const providerConfigs = {
     togetherai: () =>
@@ -35,6 +37,11 @@ export function getModelClient(model: LLMModel, config: LLMModelConfig) {
       createOpenAI({
         apiKey: apiKey || process.env.FIREWORKS_API_KEY,
         baseURL: baseURL || "https://api.fireworks.ai/inference/v1",
+      })(modelNameString),
+    azure: () =>
+      createAzure({
+        apiKey: process.env.AZURE_API_KEY,
+        baseURL: `${ENDPOINT}/openai/deployments`,
       })(modelNameString),
   };
 
