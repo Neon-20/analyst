@@ -74,9 +74,6 @@ export default function Home() {
             result,
           },
         ];
-
-        console.log("Result:", result);
-        setFiles([]);
         setMessages((prev) => {
           // replace last message with the new message
           return [...prev.slice(0, -1), message];
