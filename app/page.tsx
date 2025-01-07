@@ -11,6 +11,7 @@ import { LLMPicker } from "@/components/llm-picker";
 import { LLMSettings } from "@/components/llm-settings";
 import { useLocalStorage } from "usehooks-ts";
 import { preProcessFile } from "@/lib/preprocess";
+import { toast, useToast } from "@/hooks/use-toast";
 
 export default function Home() {
   const [files, setFiles] = useState<File[]>([]);
@@ -100,7 +101,21 @@ export default function Home() {
 
   async function customSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    if (!currentModel) throw Error("No model is selected.");
+    if (!currentModel) {
+      toast({
+        title: "Model not found",
+        description: "Please select a model from the dropdown.",
+      });
+      return;
+    }
+    if (filesData.length === 0) {
+      toast({
+        title: "No files selected",
+        description: "Please select at least one file to analyze.",
+      });
+      return;
+    }
+
     setIsLoading(true);
     handleSubmit(e, {
       data: {
@@ -121,8 +136,7 @@ export default function Home() {
             <a
               href="https://alterdomus.com"
               target="_blank"
-              className="underline decoration-[rgba(229,123,0,.3)] decoration-2 text-[#ff8800]"
-            >
+              className="underline decoration-[rgba(229,123,0,.3)] decoration-2 text-[#ff8800]">
               AD
             </a>
           </h1>
@@ -140,16 +154,14 @@ export default function Home() {
             {files.map((file) => (
               <div
                 key={file.name}
-                className="flex items-center gap-2 p-1.5 border rounded-lg bg-slate-100 text-gray-800"
-              >
+                className="flex items-center gap-2 p-1.5 border rounded-lg bg-slate-100 text-gray-800">
                 <FileText className="w-4 h-4" />
                 <span className="text-sm truncate">{file.name}</span>
                 <button
                   type="button"
                   onClick={() => handleFileRemove(file)}
                   className="cursor-pointer"
-                  disabled={isLoading}
-                >
+                  disabled={isLoading}>
                   <X className="w-4 h-4" />
                 </button>
               </div>
@@ -161,8 +173,7 @@ export default function Home() {
                 <button
                   key={msg}
                   className="flex items-center gap-2 p-1.5 border rounded-lg text-gray-800"
-                  onClick={() => setInput(msg)}
-                >
+                  onClick={() => setInput(msg)}>
                   <span className="text-sm truncate">{msg}</span>
                 </button>
               ))}
@@ -188,8 +199,7 @@ export default function Home() {
           </div>
           <form
             onSubmit={customSubmit}
-            className="flex border p-1 border-1.5 border-orange-400 rounded-xl overflow-hidden shadow-md"
-          >
+            className="flex border p-1 border-1.5 border-orange-400 rounded-xl overflow-hidden shadow-md">
             <input
               type="file"
               id="multimodal"
@@ -205,8 +215,7 @@ export default function Home() {
               onClick={(e) => {
                 e.preventDefault();
                 document.getElementById("multimodal")?.click();
-              }}
-            >
+              }}>
               <PlusIcon className="w-5 h-5" />
             </button>
             <input
@@ -219,8 +228,7 @@ export default function Home() {
             />
             <button
               type="submit"
-              className="bg-orange-500 text-white p-1.5 rounded-lg hover:bg-orange-500/80"
-            >
+              className="bg-orange-500 text-white p-1.5 rounded-lg hover:bg-orange-500/80">
               <PlayIcon className="w-5 h-5" />
             </button>
           </form>
