@@ -11,6 +11,7 @@ import { LLMPicker } from "@/components/llm-picker";
 import { LLMSettings } from "@/components/llm-settings";
 import { useLocalStorage } from "usehooks-ts";
 import { preProcessFile } from "@/lib/preprocess";
+import Image from "next/image";
 
 export default function Home() {
   const [files, setFiles] = useState<File[]>([]);
@@ -118,7 +119,12 @@ export default function Home() {
     <div className="flex flex-col min-h-screen max-h-screen">
       <nav className="flex gap-0.5 justify-between items-center p-4 top-0 fixed left-0 right-0 bg-white/80 backdrop-blur-sm shadow-sm z-10">
         <div className="flex items-center gap-2">
-          <Logo className="w-6 h-6" />
+          <Image
+          src="/thirdparty/logos/logo.png"
+          alt="Alterdomus Logo"
+          width={40}
+          height={40}
+          />
           <h1 className="text-md font-medium">
             Analyst by{" "}
             <a
