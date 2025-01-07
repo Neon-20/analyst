@@ -11,6 +11,7 @@ import {
 import { LLMModel, LLMModelConfig } from "@/lib/model";
 import "core-js/features/object/group-by.js";
 import Image from "next/image";
+import { Label } from "./ui/label";
 
 export function LLMPicker({
   models,
@@ -29,8 +30,9 @@ export function LLMPicker({
           defaultValue={languageModel.model}
           onValueChange={(e) => onLanguageModelChange({ model: e })}
         >
-          <SelectTrigger className="whitespace-nowrap border-none shadow-none focus:ring-0 px-0 py-0 h-6 text-xs">
-            <SelectValue placeholder="Language model" />
+          <SelectTrigger className="whitespace-nowrap border rounded-lg px-2 py-1 h-8 text-sm">
+            {!languageModel.model && (<Label className="mr-2 text-sm text-muted-foreground">Select a Model</Label>)}
+            <SelectValue placeholder="Select a language model" />
           </SelectTrigger>
           <SelectContent className="bg-white">
             {Object.entries(

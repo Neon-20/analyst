@@ -54,3 +54,43 @@ export function getModelClient(model: LLMModel, config: LLMModelConfig) {
 
   return createClient();
 }
+
+//from models.json file can be copy pasted later
+/*
+{
+      "id": "accounts/fireworks/models/llama-v3p1-405b-instruct",
+      "provider": "Fireworks",
+      "providerId": "fireworks",
+      "name": "Llama 3.1 405B"
+    },
+    {
+      "id": "accounts/fireworks/models/llama-v3p1-70b-instruct",
+      "provider": "Fireworks",
+      "providerId": "fireworks",
+      "name": "Llama 3.1 70B"
+    },
+    {
+      "id": "accounts/fireworks/agents/f1-preview",
+      "provider": "Fireworks",
+      "providerId": "fireworks",
+      "name": "F1 (Preview)"
+    },
+    {
+      "id": "accounts/fireworks/agents/f1-mini-preview",
+      "provider": "Fireworks",
+      "providerId": "fireworks",
+      "name": "F1 Mini (Preview)"
+    },
+    {
+      "id": "meta-llama/Meta-Llama-3.1-70B-Instruct-Turbo",
+      "provider": "Together AI",
+      "providerId": "togetherai",
+      "name": "Llama 3.1 70B"
+    },
+    {
+      "id": "llama3.2",
+      "provider": "Ollama",
+      "providerId": "ollama",
+      "name": "Llama 3.2 3B"
+    },
+  */
