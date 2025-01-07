@@ -117,7 +117,7 @@ export default function Home() {
 
   return (
     <div className="flex flex-col min-h-screen max-h-screen">
-      <nav className="flex gap-0.5 justify-between items-center p-4 top-0 fixed left-0 right-0 bg-white/80 backdrop-blur-sm shadow-sm z-10">
+      <nav className="flex gap-0.5 justify-between items-center p-2 top-0 fixed left-0 right-0 bg-white/80 backdrop-blur-sm shadow-sm z-10">
         <div className="flex items-center gap-2">
           <Image
           src="/thirdparty/logos/logo.png"
